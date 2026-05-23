@@ -11,21 +11,13 @@ URL:            https://github.com/DreamMaoMao/mangowc
 Source0:        https://github.com/mangowm/mango/archive/refs/tags/%{version}/%{_pkgname}-%{version}.tar.gz
 
 BuildRequires:  meson
-BuildRequires:  ninja
-BuildRequires:  pkgconfig(wayland-client) >= 1.23.1
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.41
-BuildRequires:  pkgconfig(libinput) >= 1.27.1
-BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(wayland-client
+BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(pixman-1)
-BuildRequires:  pkgconfig(libxkbcommon)
+BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(wlroots-0.19)
 BuildRequires:  pkgconfig(scenefx-0.4)
-
-Requires:       glibc
-Provides:       wayland-compositor
-Provides:       mangowc = %{version}-%{release}
-Obsoletes:      mangowc < %{version}-%{release}
 
 %description
 A Wayland compositor with smooth animation.
