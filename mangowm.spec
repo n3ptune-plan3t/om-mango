@@ -2,7 +2,7 @@ Name:           mangowm
 Version:        0.13.1
 Release:        1
 Summary:        A Wayland compositor with smooth animation
-License:        GPL3+ AND MIT AND CCP-1.0
+License:        MIT
 Group:          Graphical desktop/Other
 URL:            https://github.com/DreamMaoMao/mangowc
 Source0:        https://github.com/mangowm/mango/archive/refs/tags/%{version}/%{version}.tar.gz
