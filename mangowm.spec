@@ -1,7 +1,4 @@
-%define pkgname mangowm
-%define _pkgname mango
-
-Name:           %{pkgname}
+Name:           mangowm
 Version:        0.13.1
 Release:        1
 Summary:        A Wayland compositor with smooth animation
@@ -23,7 +20,7 @@ BuildRequires:  pkgconfig(scenefx-0.4)
 A Wayland compositor with smooth animation.
 
 %prep
-%autosetup -n %{_pkgname}-%{version}
+%autosetup -n mango-%{version}
 
 %build
 %meson
@@ -36,6 +33,7 @@ A Wayland compositor with smooth animation.
 %license LICENSE*
 %doc README*
 %{_bindir}/*
+%{_mandir}/man1/mango.1*
 %config %{_sysconfdir}/mango/*
 %{_datadir}/wayland-sessions/*
 %{_datadir}/xdg-desktop-portal/*
