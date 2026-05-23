@@ -33,7 +33,6 @@ A Wayland compositor with smooth animation.
 %license LICENSE*
 %doc README*
 %{_bindir}/*
-%{_mandir}/man1/mango.1*
 %config %{_sysconfdir}/mango/*
 %{_datadir}/wayland-sessions/*
 %{_datadir}/xdg-desktop-portal/*
