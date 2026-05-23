@@ -5,51 +5,41 @@ on:
     branches: [ "main", "master" ]
   pull_request:
     branches: [ "main", "master" ]
-  workflow_dispatch: # Allows you to trigger the build manually from the GitHub UI
+  workflow_dispatch:
 
 jobs:
   build-package:
     runs-on: ubuntu-latest
     
-    # Run the entire job inside the OpenMandriva Cooker environment container
     container:
       image: docker.io/openmandriva/cooker:latest
 
     steps:
-      # Step 1: Check out your repository containing the .spec file and sources
       - name: Checkout Source Code
         uses: actions/checkout@v4
 
-      # Step 2: Sync and prepare the container's package manager metadata
       - name: Update Package Manager
         run: |
           dnf clean all
           dnf makecache
 
-      # Step 3: Install underlying packaging tools required for automated builds
       - name: Install Build Tools
         run: |
           dnf install -y rpm-build rpmdevtools dnf-plugins-core
 
-      # Step 4: Dynamically parse your spec file and install missing dependencies
       - name: Install Build Dependencies (BuildRequires)
         run: |
-          # Replace 'your-package.spec' with the actual path or name of your file
           dnf builddep -y mangowm.spec
 
       - name: Execute Build via abb for znver1
         run: |
-          # 1. Install the abb packaging tool
           dnf install -y abb
 
-          # 2. Fake the HOME profile environment to run headless
           export HOME=/tmp/build_home
           mkdir -p $HOME
 
-          # 3. Force the compiler macro optimization target to znver1
-          abb build -- --target znver1
+          abb build
 
-      # Step 6: Harvest and upload compiled .rpm and .src.rpm binary outputs
       - name: Upload Compiled RPMs
         uses: actions/upload-artifact@v4
         with:
