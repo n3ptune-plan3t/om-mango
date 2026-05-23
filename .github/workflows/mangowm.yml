@@ -40,7 +40,7 @@ jobs:
 
           abb build
 
-      - name: Upload Compiled RPMs
+      - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: openmandriva-cooker-rpms
@@ -48,3 +48,7 @@ jobs:
             /github/home/rpmbuild/RPMS/**/*.rpm
             /github/home/rpmbuild/SRPMS/**/*.rpm
           if-no-files-found: error
+          compression-level: 6
+          overwrite: false
+          include-hidden-files: false
+
