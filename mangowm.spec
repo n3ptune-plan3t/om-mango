@@ -5,7 +5,7 @@ Summary:        A Wayland compositor with smooth animation
 License:        GPLv3
 Group:          Graphical desktop/Other
 URL:            https://github.com/DreamMaoMao/mangowc
-Source0:        https://github.com/mangowm/mango/archive/refs/tags/%{version}/%{_pkgname}-%{version}.tar.gz
+Source0:        https://github.com/mangowm/mango/archive/refs/tags/%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig(wayland-client)
