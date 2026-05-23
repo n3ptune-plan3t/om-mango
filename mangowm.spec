@@ -11,7 +11,7 @@ URL:            https://github.com/DreamMaoMao/mangowc
 Source0:        https://github.com/mangowm/mango/archive/refs/tags/%{version}/%{_pkgname}-%{version}.tar.gz
 
 BuildRequires:  meson
-BuildRequires:  pkgconfig(wayland-client
+BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(xkbcommon)
