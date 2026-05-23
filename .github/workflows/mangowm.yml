@@ -25,7 +25,7 @@ jobs:
 
       - name: Install Build Tools
         run: |
-          dnf install -y rpm-build rpmdevtools dnf-plugins-core
+          dnf install -y rpm-build rpmdevtools dnf-plugins-core abb
 
       - name: Install Build Dependencies (BuildRequires)
         run: |
@@ -33,18 +33,13 @@ jobs:
 
       - name: Execute Build via abb for znver1
         run: |
-          dnf install -y abb
-
-          export HOME=/tmp/build_home
-          mkdir -p $HOME
-
           abb build
 
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: openmandriva-cooker-rpms
-          path: /github/home/rpmbuild/RPMS/znver1/*.rpm
+          path: ~/RPMS/**/*.rpm
           if-no-files-found: error
           compression-level: 6
           overwrite: false
