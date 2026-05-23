@@ -34,14 +34,12 @@ jobs:
       - name: Execute Build via abb for znver1
         run: |
           abb build
-
+          
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: openmandriva-cooker-rpms
-          path: ~/RPMS/**/*.rpm
+          path: RPMS/**/*.rpm
           if-no-files-found: error
           compression-level: 6
-          overwrite: false
-          include-hidden-files: false
 
