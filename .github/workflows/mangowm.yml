@@ -1,4 +1,4 @@
-name: OpenMandriva Cooker Local RPM Build
+name: OpenMandriva RPM Build
 
 on:
   push:
@@ -18,27 +18,24 @@ jobs:
       - name: Checkout Source Code
         uses: actions/checkout@v4
 
-      - name: Update Package Manager
+      - name: Install Build Tools
         run: |
           dnf clean all
           dnf makecache
-
-      - name: Install Build Tools
-        run: |
           dnf install -y rpm-build rpmdevtools dnf-plugins-core abb
 
-      - name: Install Build Dependencies (BuildRequires)
+      - name: Install Build Deps
         run: |
           dnf builddep -y mangowm.spec
 
-      - name: Execute Build via abb for znver1
+      - name: Execute Build
         run: |
           abb build
           
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: openmandriva-cooker-rpms
+          name: mangowm
           path: RPMS/**/*.rpm
           if-no-files-found: error
           compression-level: 6
