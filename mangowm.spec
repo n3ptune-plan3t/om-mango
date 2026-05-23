@@ -36,3 +36,6 @@ A Wayland compositor with smooth animation.
 %license LICENSE*
 %doc README*
 %{_bindir}/*
+%config %{_sysconfdir}/mango/*
+%{_datadir}/wayland-sessions/*
+%{_datadir}/xdg-desktop-portal/*
