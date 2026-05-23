@@ -45,8 +45,8 @@ jobs:
         with:
           name: openmandriva-cooker-rpms
           path: |
-            /github/home/rpmbuild/RPMS/**/*.rpm
-            /github/home/rpmbuild/SRPMS/**/*.rpm
+            /github/home/rpmbuild/RPMS/znver1/*.rpm
+            /github/home/rpmbuild/znver1/**/*.rpm
           if-no-files-found: error
           compression-level: 6
           overwrite: false
