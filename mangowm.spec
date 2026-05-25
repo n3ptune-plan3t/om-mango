@@ -1,23 +1,27 @@
 Name:           mangowm
 Version:        0.13.1
 Release:        1
-Summary:        A Wayland compositor with smooth animation
-License:        MIT
+Summary:        A modern, lightweight, high-performance Wayland compositor built on dwl
+License:        GPL-3.0-or-later AND MIT AND X11 AND CC0-1.0
 Group:          Graphical desktop/Other
-URL:            https://github.com/DreamMaoMao/mangowc
+URL:            https://github.com/mangowm/mangowc
 Source0:        https://github.com/mangowm/mango/archive/refs/tags/%{version}/%{version}.tar.gz
 
 BuildRequires:  meson
-BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  pkgconfig(libinput)
-BuildRequires:  pkgconfig(pixman-1)
-BuildRequires:  pkgconfig(xkbcommon)
-BuildRequires:  pkgconfig(libpcre2-8)
+BuildRequires:  pkgconfig(xcb)
+BuildRequires:  pkgconfig(xcb-icccm)
+BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(wlroots-0.19)
+BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(libinput)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(scenefx-0.4)
 
 %description
-A Wayland compositor with smooth animation.
+MangoWM is a modern, lightweight, high-performance Wayland compositor built on
+dwl — crafted for speed, flexibility, and a customizable desktop experience.
 
 %prep
 %autosetup -n mango-%{version}
@@ -30,9 +34,15 @@ A Wayland compositor with smooth animation.
 %meson_install
 
 %files
-%license LICENSE*
-%doc README*
-%{_bindir}/*
-%config %{_sysconfdir}/mango/*
-%{_datadir}/wayland-sessions/*
-%{_datadir}/xdg-desktop-portal/*
+%doc README.md
+%license LICENSE
+%license LICENSE.wlroots
+%license LICENSE.tinywl
+%license LICENSE.sway
+%license LICENSE.dwm
+%license LICENSE.dwl
+%{_bindir}/mango
+%{_bindir}/mmsg
+%config %{_sysconfdir}/mango/config.conf
+%{_datadir}/wayland-sessions/mango.desktop
+%{_datadir}/xdg-desktop-portal/mango-portals.conf
